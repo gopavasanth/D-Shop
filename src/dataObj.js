@@ -1,63 +1,52 @@
 var data = [
   {
-    name: 'Frozen Yogurt',
+    id: 101,
+    item: 'Shirts',
     location: 'Bangalore',
-    brand: 'Nike',
-    stock: 10,
+    brand: 'Team Spirit',
+    stock: 2,
   },
   {
-    name: 'Ice cream sandwich',
+    id: 102,
+    item: "T-Shirts",
     location: 'Bangalore',
-    brand: 'Philips',
-    stock: 5,
+    brand: "Team Spirit",
+    stock: 2
   },
   {
-    name: 'Eclair',
+    id: 103,
+    item: "Shoes",
     location: 'Bangalore',
-    brand: 'Samsung',
-    stock: 10,
+    brand: "Nike",
+    stock: 3
   },
   {
-    name: 'Cupcake',
-    location: 'Delhi',
-    brand: 'Philips',
-    stock: 15,
+    id: 104,
+    item: "Pants",
+    location: 'Bangalore',
+    brand: "Denim",
+    stock: 5
   },
   {
-    name: 'Gingerbread',
-    location: 'Delhi',
-    brand: 'Nike',
-    stock: 10,
-  },
-  {
-    name: 'Jelly bean',
+    id: 105,
+    item: "Jumper Wires",
     location: 'Hyderabad',
-    brand: 'Philips',
-    stock: 8,
+    brand: "Philips",
+    stock: 18
   },
   {
-    name: 'Lollipop',
+    id: 106,
+    item: "Rasberry Pi",
     location: 'Hyderabad',
-    brand: 'Samsung',
-    stock: 10,
+    brand: "Samsung",
+    stock: 5
   },
   {
-    name: 'Honeycomb',
+    id: 107,
+    item: "Drones",
     location: 'Hyderabad',
-    brand: 'Philips',
-    stock: 5,
-  },
-  {
-    name: 'Donut',
-    location: 'Hyderabad',
-    brand: 'Nike',
-    stock: 10,
-  },
-  {
-    name: 'KitKat',
-    location: 'Hyderabad',
-    brand: 'Samsung',
-    stock: 8,
+    brand: "Philips",
+    stock: 10
   }
 ]
 module.exports = data;

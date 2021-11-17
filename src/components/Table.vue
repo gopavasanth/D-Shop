@@ -4,10 +4,18 @@
       <v-col cols="12">
         <v-data-table
           :headers="headers"
-          :items="desserts"
-          :items-per-page="5"
+          :items="data"
+          item-key="name"
           class="elevation-1"
+          :search="search"
         >
+          <template v-slot:top>
+            <v-text-field
+              v-model="search"
+              label="Search"
+              class="mx-4"
+            ></v-text-field>
+          </template>
         </v-data-table>
       </v-col>
     </v-row>
@@ -17,27 +25,25 @@
 
 <script>
 import dataObj from "../dataObj";
-
 export default {
   data() {
     return {
-      name: "Table",
-      headers: [
-        {
-          text: "Items",
-          align: "start",
-          sortable: true,
-          value: "name",
-        },
-        { text: "Location", value: "location" },
-        { text: "Brand", value: "brand" },
-        { text: "Stock", value: "stock" },
-      ],
-      desserts: dataObj,
+      search: "",
+      data: dataObj,
     };
   },
+  computed: {
+    headers() {
+      return [
+        { text: "location", value: "location" },
+        { text: "item", value: "item" },
+        { text: "brand", value: "brand" },
+        { text: "stock", value: "stock" },
+      ];
+    },
+  },
+  methods: {},
 };
 </script>
-
 <style>
 </style>
