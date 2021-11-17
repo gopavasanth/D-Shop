@@ -6,7 +6,7 @@
           <v-select
             :items="locations"
             label="Location"
-            v-model="location"
+            v-model="selectedLocation"
             solo
             @change="onChangeLocation"
           ></v-select>
@@ -16,7 +16,7 @@
           <v-select
             :items="items"
             label="Items"
-            v-model="item"
+            v-model="selectedItem"
             @change="onChangeItem"
             solo
           ></v-select>
@@ -26,7 +26,7 @@
           <v-select
             :items="brands"
             label="Brand"
-            v-model="brand"
+            v-model="selectedBrand"
             solo
           ></v-select>
         </v-col>
@@ -95,22 +95,23 @@ export default {
   methods: {
     onChangeLocation() {
       this.items = [];
-      for (let i = 0; i < datanew[this.location].length; i++) {
-        this.items.push(datanew[this.location][i].item);
+      for (let i = 0; i < datanew[this.selectedLocation].length; i++) {
+        this.items.push(datanew[this.selectedLocation][i].item);
       }
     },
     onChangeItem() {
       this.brands = [];
-      for (let i = 0; i < datanew[this.location].length; i++) {
-        this.brands.push(datanew[this.location][i].brand);
+      for (let i = 0; i < datanew[this.selectedLocation].length; i++) {
+        this.brands.push(datanew[this.selectedLocation][i].brand);
       }
     },
     applyFilters() {
       this.data = this.data.filter((data) => {
         return (
-          (data.location == this.location || this.location == "") &&
-          (data.item == this.item || this.item == "") &&
-          (data.brand == this.brand || this.brand == "")
+          (data.location == this.selectedLocation ||
+            this.selectedLocation == "") &&
+          (data.item == this.selectedItem || this.selectedItem == "") &&
+          (data.brand == this.selectedBrand || this.selectedBrand == "")
         );
       });
     },
@@ -119,7 +120,11 @@ export default {
     },
     viewCart() {
       Object.values(this.selected).map((it) => {
-        this.selectedRows.push([it.item, it.location, it.brand]);
+        this.selectedRows.push([
+          it.selectedItem,
+          it.selectedLocation,
+          it.selectedBrand,
+        ]);
       });
       alert(this.selectedRows + "\n");
       this.selected = "";
@@ -140,9 +145,9 @@ export default {
     data: tableData,
     search: "",
     valid: false,
-    location: "",
-    item: "",
-    brand: "",
+    selectedLocation: "",
+    selectedItem: "",
+    selectedBrand: "",
     locations: locations,
     items: [],
     brands: [],
