@@ -124,7 +124,9 @@ export default {
     },
     viewCart() {
       Object.values(this.selected).map((it) => {
-        this.selectedRows.push([it.id, it.item, it.location, it.brand]);
+        this.selectedRows.push(
+          "{" + [it.id, it.item, it.location, it.brand] + "}"
+        );
       });
       alert(this.selectedRows);
     },
