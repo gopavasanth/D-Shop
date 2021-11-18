@@ -12,7 +12,7 @@
           ></v-select>
         </v-col>
 
-        <v-col cols="12" md="4">
+        <v-col cols="12" md="2">
           <v-select
             :items="items"
             label="Items"
@@ -22,7 +22,7 @@
           ></v-select>
         </v-col>
 
-        <v-col cols="12" md="4">
+        <v-col cols="12" md="2">
           <v-select
             :items="brands"
             label="Brand"
@@ -30,19 +30,19 @@
             solo
           ></v-select>
         </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col class="my-0 py-0 mt-1">
+        <v-col cols="12" md="2">
           <v-btn depressed color="primary" @click="applyFilters">
             Apply Filters
           </v-btn>
         </v-col>
-        <v-col class="ma-0 pa-0 mt-1">
+        <v-col cols="12" md="2">
           <v-btn depressed color="error" @click="resetFilters"> Reset </v-btn>
         </v-col>
-        <v-col class="ma-0 pa-0 mt-1">
-          <v-btn depressed color="secondary" @click="viewCart">
+      </v-row>
+
+      <v-row>
+        <v-col>
+          <v-btn depressed color="secondary" outlined small @click="viewCart">
             View Cart
           </v-btn>
         </v-col>
@@ -116,18 +116,17 @@ export default {
       });
     },
     resetFilters() {
-      (this.locations = locations), (this.items = ""), (this.brands = "");
+      (this.locations = locations),
+        (this.items = ""),
+        (this.brands = ""),
+        (this.data = tableData),
+        (this.selected = []);
     },
     viewCart() {
       Object.values(this.selected).map((it) => {
-        this.selectedRows.push([
-          it.selectedItem,
-          it.selectedLocation,
-          it.selectedBrand,
-        ]);
+        this.selectedRows.push([it.id, it.item, it.location, it.brand]);
       });
-      alert(this.selectedRows + "\n");
-      this.selected = "";
+      alert(this.selectedRows);
     },
   },
   computed: {},
@@ -154,10 +153,9 @@ export default {
   }),
   watch: {
     selected: function () {
-      console.log(this.selected);
-      // Object.values(this.selected).map((item) => {
-      //   // console.log(item.id);
-      // });
+      Object.values(this.selected).map((it) => {
+        console.log(it.item);
+      });
     },
   },
 };
