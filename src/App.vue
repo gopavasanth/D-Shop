@@ -1,19 +1,19 @@
 <template>
   <v-app>
     <v-main>
-      <Home />
+      <Index />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Home from "./components/Home";
+import Index from "./components/Index";
 
 export default {
   name: "App",
 
   components: {
-    Home,
+    Index,
   },
 
   data: () => ({
